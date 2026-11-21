@@ -1,17 +1,35 @@
-﻿int[] arrayB = { 5, -3, 8, -1, 0, -7, 4 };
-for (int i = 0; i < arrayB.Length; i++) {
-    if (arrayB[i] < 0) {
-        arrayB[i] = 0;
-    }
+﻿Console.Write("Введите размер массива: ");
+int count = int.Parse(Console.ReadLine());
+
+int[] arr = new int[count];
+
+for (int i = 0; i < count; i++) {
+    Console.Write($"Введите элемент {i + 1}: ");
+    arr[i] = int.Parse(Console.ReadLine());
 }
 
-int[] arrayV = { 4, 7, 2, 9, 5 };
-for (int i = 0; i < arrayV.Length - 1; i++) {
-    for (int j = 0; j < arrayV.Length - 1 - i; j++) {
-        if (arrayV[j] < arrayV[j + 1]) {
-            int temp = arrayV[j];
-            arrayV[j] = arrayV[j + 1];
-            arrayV[j + 1] = temp;
-        }
+int sum = 0;
+for (int i = 0; i < count; i++) {
+    sum += arr[i];
+}
+
+Console.WriteLine($"Сумма элементов массива: {sum}");
+
+int[] GenerateFibonacci(int n) {
+    if (n <= 0) return new int[0];
+    
+    int[] fib = new int[n];
+    if (n >= 1) fib[0] = 1;
+    if (n >= 2) fib[1] = 1;
+
+    for (int i = 2; i < n; i++) {
+        fib[i] = fib[i - 1] + fib[i - 2];
     }
+
+    return fib;
+}
+
+int[] result = GenerateFibonacci(10);
+foreach (int num in result) {
+    Console.Write(num + " ");
 }
